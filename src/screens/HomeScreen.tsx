@@ -1,10 +1,11 @@
 import React from 'react';
+import { HomeContainer } from '../containers/HomeContainer/HomeContainer';
 
 const HomeScreen = () => {
     return (
-        <div style={{marginTop:"100px"}}>
-            <h1>soy la pagina de inicio</h1>
-        </div>
+        <>
+        <HomeContainer />
+        </>
     )
 }
 

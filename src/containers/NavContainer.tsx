@@ -21,13 +21,18 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import LayersRoundedIcon from '@material-ui/icons/LayersRounded';
 import BallotRoundedIcon from '@material-ui/icons/BallotRounded';
 import DashboardRoundedIcon from '@material-ui/icons/DashboardRounded';
+import PeopleAltRoundedIcon from '@material-ui/icons/PeopleAltRounded';
+import CategoryRoundedIcon from '@material-ui/icons/CategoryRounded';
 
-const drawerWidth = 240;
+const drawerWidth = 180;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: 'flex',
+      // necessary for content to be below app bar
+      ...theme.mixins.toolbar,
+      justifyContent: 'flex-end',
     },
     appBar: {
       transition: theme.transitions.create(['margin', 'width'], {
@@ -64,22 +69,7 @@ const useStyles = makeStyles((theme: Theme) =>
       ...theme.mixins.toolbar,
       justifyContent: 'flex-end',
     },
-    content: {
-      flexGrow: 1,
-      padding: theme.spacing(3),
-      transition: theme.transitions.create('margin', {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-      }),
-      marginLeft: -drawerWidth,
-    },
-    contentShift: {
-      transition: theme.transitions.create('margin', {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      marginLeft: 0,
-    },
+    
   }),
 );
 
@@ -96,12 +86,22 @@ const NavContainer = (props: props) => {
     const routesList = [
       {
         text: "Home",
-        icon: <LayersRoundedIcon />,
+        icon: <LayersRoundedIcon style={{ color:'#D5A021' }} />,
         onClick: () => history.push("/", handleDrawerClose())
       },
       {
         text: "Inventory",
-        icon: <BallotRoundedIcon />,
+        icon: <BallotRoundedIcon style={{ color:'#D5A021' }} />,
+        onClick: () => history.push("/inventario", handleDrawerClose())
+      },
+      {
+        text: "Suppliers",
+        icon: <PeopleAltRoundedIcon style={{ color:'#D5A021' }} />,
+        onClick: () => history.push("/inventario", handleDrawerClose())
+      },
+      {
+        text: "Category",
+        icon: <CategoryRoundedIcon style={{ color:'#D5A021' }} />,
         onClick: () => history.push("/inventario", handleDrawerClose())
       }
     ];
@@ -166,7 +166,7 @@ const NavContainer = (props: props) => {
             );
           })}
         </List>
-        <Divider />   
+           
       </Drawer>
       
     </div>
