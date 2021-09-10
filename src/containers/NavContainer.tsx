@@ -24,7 +24,7 @@ import DashboardRoundedIcon from '@material-ui/icons/DashboardRounded';
 import PeopleAltRoundedIcon from '@material-ui/icons/PeopleAltRounded';
 import CategoryRoundedIcon from '@material-ui/icons/CategoryRounded';
 
-const drawerWidth = 180;
+const drawerWidth = 200;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -85,24 +85,24 @@ const NavContainer = (props: props) => {
 
     const routesList = [
       {
-        text: "Home",
+        text: "Inicio",
         icon: <LayersRoundedIcon style={{ color:'#D5A021' }} />,
         onClick: () => history.push("/", handleDrawerClose())
       },
       {
-        text: "Inventory",
+        text: "Inventario",
         icon: <BallotRoundedIcon style={{ color:'#D5A021' }} />,
         onClick: () => history.push("/inventario", handleDrawerClose())
       },
       {
-        text: "Suppliers",
+        text: "Proveedores",
         icon: <PeopleAltRoundedIcon style={{ color:'#D5A021' }} />,
-        onClick: () => history.push("/inventario", handleDrawerClose())
+        onClick: () => history.push("/proveedores", handleDrawerClose())
       },
       {
-        text: "Category",
+        text: "Categorias",
         icon: <CategoryRoundedIcon style={{ color:'#D5A021' }} />,
-        onClick: () => history.push("/inventario", handleDrawerClose())
+        onClick: () => history.push("/categorias", handleDrawerClose())
       }
     ];
 

@@ -8,16 +8,18 @@ import {
   Typography,
   Divider,
 } from "@material-ui/core";
+
+import PersonRoundedIcon from '@material-ui/icons/PersonRounded';
+import EmailRoundedIcon from '@material-ui/icons/EmailRounded';
+import CallRoundedIcon from '@material-ui/icons/CallRounded';
+import LocationCityRoundedIcon from '@material-ui/icons/LocationCityRounded';
+
 import { InputText } from "../../components/InputText";
-import { InputNumber } from "../../components/InputNumber";
 import { ButtonLoading } from "../../components/ButtonLoading";
+import LocationOnRoundedIcon from '@material-ui/icons/LocationOnRounded';
+import { InputNumber } from "../../components/InputNumber";
 
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import AddCircleRoundedIcon from "@material-ui/icons/AddCircleRounded";
-import MonetizationOnRoundedIcon from "@material-ui/icons/MonetizationOnRounded";
 import SaveRoundedIcon from '@material-ui/icons/SaveRounded';
-
-import { SelectorList } from "../../components/SelectorList";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -46,38 +48,21 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export const AddProductForm = () => {
+export const AddSupplierForm = () => {
   const classes = useStyles();
-  // eslint-disable-next-line
-  const [productName, setProductName] = useState("");
-  // eslint-disable-next-line
-  const [supplier, setSupplier] = useState("");
-  // eslint-disable-next-line
-  const [category, setCategory] = useState("");
 
-  // eslint-disable-next-line
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleProductName = (event: any) => {
-    setProductName(event.target.value);
-  };
+  const handleMock = () => {};
 
-  const handleSupplier = (event: any) => {
-    setSupplier(event.target.value);
-  };
-
-  const handleCategory = (event: any) => {
-    setCategory(event.target.value);
-  };
-
-  const onAcceptPress = async () => {};
+  const onAcceptPress = () => {};
 
   return (
     <div className={classes.root}>
       <CssBaseline />
       <div className={classes.form}>
         <Typography variant="h5" className={classes.informationTitle}>
-          {"Registrar Producto"}
+          {"Registrar Proveedor"}
         </Typography>
         <Divider />
 
@@ -85,46 +70,47 @@ export const AddProductForm = () => {
           <Grid item xs={12} md={4}>
             <InputText
               autoFocus={true}
-              onChange={handleProductName}
-              label="Nombre del Producto"
-              id="name-product"
-              icon={<ShoppingCartIcon />}
+              onChange={handleMock}
+              label="Nombre del Proveedor"
+              id="name-supplier"
+              icon={<PersonRoundedIcon />}
             />
           </Grid>
 
           <Grid item xs={12} md={4}>
-            <SelectorList 
-            id=""
-            onChange={handleSupplier}
-            fullWidth={true}
-            inputLabel="Proveedor"
+            <InputText
+              autoFocus={true}
+              onChange={handleMock}
+              label="Correo Electronico"
+              id="email"
+              icon={<EmailRoundedIcon />}
             />
           </Grid>
 
           <Grid item xs={12} md={4}>
-            <SelectorList
-            onChange={handleCategory}
-            id=""
-            fullWidth={true}
-            inputLabel="Categoria"
+            <InputNumber
+              fullWidth={true}
+              label="Número de Contacto"
+              id="contact-number"
+              icon={<CallRoundedIcon />}
             />
           </Grid>
 
           <Grid item xs={6} md={4}>
-            <InputNumber
-              fullWidth={true}
-              label="Stock"
-              id="stock"
-              icon={<AddCircleRoundedIcon />}
+            <InputText
+              onChange={handleMock}
+              label="Estado"
+              id="state"
+              icon={<LocationOnRoundedIcon />}
             />
           </Grid>
 
           <Grid item xs={6} md={4}>
-            <InputNumber
-              fullWidth={true}
-              label="Precio"
-              id="price"
-              icon={<MonetizationOnRoundedIcon />}
+            <InputText
+              onChange={handleMock}
+              label="Ciudad"
+              id="city"
+              icon={<LocationCityRoundedIcon />}
             />
           </Grid>
 
