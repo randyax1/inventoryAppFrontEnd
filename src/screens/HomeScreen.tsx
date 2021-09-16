@@ -1,12 +1,14 @@
-import React from 'react';
-import { HomeContainer } from '../containers/HomeContainer/HomeContainer';
+import React from "react";
+import { CssBaseline } from "@material-ui/core";
+import { HomeContainer } from "../containers/HomeContainer/HomeContainer";
 
 const HomeScreen = () => {
-    return (
-        <>
-        <HomeContainer />
-        </>
-    )
-}
+  return (
+    <>
+      <CssBaseline />
+      <HomeContainer />
+    </>
+  );
+};
 
-export default HomeScreen
+export default HomeScreen;

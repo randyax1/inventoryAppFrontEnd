@@ -1,10 +1,13 @@
-import React from 'react'
-import { SupplierContainer } from '../containers/SupplierContainer/SupplierContainer'
+import React from "react";
+import { CssBaseline } from "@material-ui/core";
+
+import { SupplierContainer } from "../containers/SupplierContainer/SupplierContainer";
 
 export const SupplierScreen = () => {
-    return (
+  return (
     <>
-    <SupplierContainer />
+      <CssBaseline />
+      <SupplierContainer />
     </>
-    )
-}
+  );
+};
