@@ -52,7 +52,7 @@ export const ButtonLoading = ( props: InputLoadingButtonProps ) => {
             disabled={props.isLoading || props.disabled}
             onClick={props.onClick}
           >
-            {props.isLoading ? <SaveIcon className={classes.blank}/> : <>{ props.icon }{ props.label }</>}
+            {props.isLoading ? <SaveIcon className={classes.blank}/> : <>{ props.icon  }&nbsp;{ props.label }</>}
             {props.isLoading && <CircularProgress size={24} className={classes.buttonProgress} />}
           </Button>
         </>

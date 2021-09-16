@@ -13,10 +13,10 @@ import PersonRoundedIcon from '@material-ui/icons/PersonRounded';
 import EmailRoundedIcon from '@material-ui/icons/EmailRounded';
 import CallRoundedIcon from '@material-ui/icons/CallRounded';
 import LocationCityRoundedIcon from '@material-ui/icons/LocationCityRounded';
+import LocationOnRoundedIcon from '@material-ui/icons/LocationOnRounded';
 
 import { InputText } from "../../components/InputText";
 import { ButtonLoading } from "../../components/ButtonLoading";
-import LocationOnRoundedIcon from '@material-ui/icons/LocationOnRounded';
 import { InputNumber } from "../../components/InputNumber";
 
 import SaveRoundedIcon from '@material-ui/icons/SaveRounded';
@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export const AddSupplierForm = () => {
   const classes = useStyles();
-
+// eslint-disable-next-line
   const [isLoading, setIsLoading] = useState(false);
 
   const handleMock = () => {};

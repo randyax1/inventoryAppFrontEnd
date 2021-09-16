@@ -19,10 +19,11 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 import LayersRoundedIcon from '@material-ui/icons/LayersRounded';
-import BallotRoundedIcon from '@material-ui/icons/BallotRounded';
+import PagesRoundedIcon from '@material-ui/icons/PagesRounded';
 import DashboardRoundedIcon from '@material-ui/icons/DashboardRounded';
 import PeopleAltRoundedIcon from '@material-ui/icons/PeopleAltRounded';
 import CategoryRoundedIcon from '@material-ui/icons/CategoryRounded';
+
 
 const drawerWidth = 200;
 
@@ -69,6 +70,14 @@ const useStyles = makeStyles((theme: Theme) =>
       ...theme.mixins.toolbar,
       justifyContent: 'flex-end',
     },
+
+    brand: {
+        MozUserSelect: 'none',
+        msUserSelect: 'none',
+        userSelect: 'none',
+        WebkitUserSelect: 'none',
+        color:'#D5A021'
+    }
     
   }),
 );
@@ -90,9 +99,9 @@ const NavContainer = (props: props) => {
         onClick: () => history.push("/", handleDrawerClose())
       },
       {
-        text: "Inventario",
-        icon: <BallotRoundedIcon style={{ color:'#D5A021' }} />,
-        onClick: () => history.push("/inventario", handleDrawerClose())
+        text: "Productos",
+        icon: <PagesRoundedIcon style={{ color:'#D5A021' }} />,
+        onClick: () => history.push("/productos", handleDrawerClose())
       },
       {
         text: "Proveedores",
@@ -136,7 +145,7 @@ const NavContainer = (props: props) => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            <DashboardRoundedIcon style={{color:'#D5A021'}}/> Inventory App
+            <span className={classes.brand}><DashboardRoundedIcon /> <span style={{color:'white'}}>Inventory App</span> </span>
           </Typography>
         </Toolbar>
       </AppBar>

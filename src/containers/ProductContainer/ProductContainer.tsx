@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Grid } from '@material-ui/core'
+import { Divider, Grid } from '@material-ui/core';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 
 import TitleLabel from '../../components/TitleLabel';
 import { ButtonLoading } from '../../components/ButtonLoading';
-import { CategoryModal } from './CategoryModal';
+import { ProductModal } from './ProductModal';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -14,40 +14,41 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export const CategoryContainer = () => {
+export const ProductContainer = () => {
 
     const classes = useStyles();
 
-    const [OpenCategoryModal, setOpenCategoryModal] = useState(false);
+    const [openProductModal, setOpenProductModal] = useState(false);
 
     const skd = () => {}
 
     return (
         <>
+
         <Grid 
         container
-        direction="row"
+        direction="row" 
         alignItems="baseline"
-        justifyContent="space-between"
+        justifyContent="space-between" 
         className={classes.titleAndButton}  
         >
-            
-            <TitleLabel titleLabel="Categorias" />
-            
+
+            <TitleLabel titleLabel="Productos" />
+
             <ButtonLoading 
-            isLoading={false}
-            label={'Crear Categoria'}
-            onClick={() => { setOpenCategoryModal(true) }}
+            isLoading={false} 
+            label={'Registrar Producto'} 
+            onClick={() => { setOpenProductModal(true) }} 
             />
 
         </Grid>
 
-        <CategoryModal
+        <ProductModal 
         in
-        title="Agregar Categoria"
-        open={OpenCategoryModal}
-        onClose={() => setOpenCategoryModal(false)}
-        />
+        title="Agregar Producto"
+        open={openProductModal} 
+        onClose={(event) => setOpenProductModal(false)} 
+      />
         </>
     )
 }
