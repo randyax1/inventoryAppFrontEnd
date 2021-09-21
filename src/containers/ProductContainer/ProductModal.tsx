@@ -73,7 +73,7 @@ interface ProductModalProps {
 
 export const ProductModal = (props: ProductModalProps) => {
     const classes = useStyles();
-
+    // eslint-disable-next-line
     const [ProductName, setProductName] = useState("");
 
     const handleProductName = (event: any) => {

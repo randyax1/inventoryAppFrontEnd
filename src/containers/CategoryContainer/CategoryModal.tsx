@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Fade from "@material-ui/core/Fade";
 import Backdrop from "@material-ui/core/Backdrop";
-import { Grid, Modal, Typography } from "@material-ui/core";
+import { Grid, Modal, Snackbar, Typography } from "@material-ui/core";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
+import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 
 import CategoryRoundedIcon from '@material-ui/icons/CategoryRounded';
 import SaveRoundedIcon from "@material-ui/icons/SaveRounded";
 
 import { InputText } from "../../components/InputText";
 import { ButtonLoading } from "../../components/ButtonLoading";
+import { CategoryInterface } from "../../types/inventoryAppBaseTypes";
+import { inventoryAppCreateCategory, inventoryAppUpdateCategory } from "../../lib/inventoryAppBackendClient";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -30,8 +33,6 @@ const useStyles = makeStyles((theme: Theme) =>
         height: "25%",
         width: "75%",
         padding: theme.spacing(2, 2, 1, 2),
-        overflow: "scroll",
-        overflowX: "hidden",
       },
 
       [theme.breakpoints.down("sm")]: {
@@ -60,26 +61,76 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
+function Alert(props: AlertProps) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
 interface CategoryModalProps {
-  title: string;
   open: boolean;
-  onClose?: {
-    bivarianceHack(event: {}, reason: "backdropClick" | "escapeKeyDown"): void;
-  }["bivarianceHack"];
-  in: boolean;
+    onClose?: any;
+    onSuccess: Function,
+    category?: CategoryInterface;
+    categoryId?: string;
+    isUpdatingCategory?: boolean;
+    title: string;
+    in: boolean;
 }
 
 export const CategoryModal = (props: CategoryModalProps) => {
   
+  const { category = {
+    _id: '',
+    name: ''
+} } = props
+  
   const classes = useStyles();
 
-  const [CategoryName, setCategoryName] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [openAlert, setOpenAlert] = useState(false)
 
-  const handleProductName = (event: any) => {
+  const [categoryName, setCategoryName] = useState("");
+
+  const [categoryNameError, setCategoryNameError] = useState(false);
+  const [categoryHelperText, setCategoryHelperText] = useState('');
+
+  useEffect(() => {
+    setCategoryName(props.category ? category.name : "");
+    setCategoryNameError(false);
+    // eslint-disable-next-line
+  }, [props.open]);
+
+  const onCategoryNameInputChange = (event: any) => {
     setCategoryName(event.target.value);
   };
 
-  const onAcceptPress = () => {};
+  const handleAlertClose = () => {
+    setOpenAlert(false)
+  }
+
+  const onAcceptPress = async () => {
+
+    if(categoryName === "") {
+      setCategoryNameError(true)
+      setCategoryHelperText('Este campo es necesario.');
+    }
+
+    if(categoryName) {
+      setIsLoading(true);
+
+      if(props.isUpdatingCategory) {
+        await inventoryAppUpdateCategory( category._id, categoryName )
+      }
+
+      if(!props.isUpdatingCategory) {
+        await inventoryAppCreateCategory(categoryName);
+      }
+      setIsLoading(false);
+      setOpenAlert(true);
+      props.onClose({}, 'escapeKeyDown');
+      props.onSuccess();
+    }
+
+  };
 
   return (
     <>
@@ -104,7 +155,11 @@ export const CategoryModal = (props: CategoryModalProps) => {
             <Grid item xs={12} sm={12} md={4}>
               <InputText
                 autoFocus={true}
-                onChange={handleProductName}
+                capitalize
+                helperText={categoryHelperText}
+                error={categoryNameError}
+                defaultValue={props.category ? category.name : ""}
+                onChange={onCategoryNameInputChange}
                 label="Nombre de la Categoria"
                 id="name-category"  
                 icon={<CategoryRoundedIcon />}
@@ -113,8 +168,9 @@ export const CategoryModal = (props: CategoryModalProps) => {
 
             <Grid item xs={12} md={4}>
               <ButtonLoading
+                disabled={isLoading}
                 fullWidth={true}
-                isLoading={false}
+                isLoading={isLoading}
                 onClick={onAcceptPress}
                 label="&nbsp;Guardar"
                 icon={<SaveRoundedIcon />}
@@ -123,6 +179,11 @@ export const CategoryModal = (props: CategoryModalProps) => {
           </Grid>
         </Fade>
       </Modal>
+      <Snackbar open={openAlert} autoHideDuration={7000} onClose={handleAlertClose}>
+                <Alert onClose={handleAlertClose} severity="success">
+                {props.isUpdatingCategory || !props.isUpdatingCategory ? "La categoria a sido actualizada" : "Categoria creada exitosamente"}
+                </Alert>
+      </Snackbar>
     </>
   );
 };

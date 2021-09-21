@@ -20,8 +20,6 @@ export const SupplierContainer = () => {
 
     const classes = useStyles();
 
-    const skd = () => {}
-
     return (
         <>
         <Grid 

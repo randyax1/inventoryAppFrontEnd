@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Divider, Grid } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 
 import TitleLabel from '../../components/TitleLabel';
@@ -19,8 +19,6 @@ export const ProductContainer = () => {
     const classes = useStyles();
 
     const [openProductModal, setOpenProductModal] = useState(false);
-
-    const skd = () => {}
 
     return (
         <>
