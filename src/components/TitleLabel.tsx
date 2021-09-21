@@ -12,6 +12,10 @@ const useStyles = makeStyles((theme: Theme) =>
         msUserSelect: 'none',
         userSelect: 'none',
         WebkitUserSelect: 'none',
+
+        [theme.breakpoints.down('xs')]: {
+            fontSize: '1.5rem'
+        },
     }
   }),
 );
@@ -26,7 +30,7 @@ const TitleLabel = ( props: TitleLabelProp ) => {
 
     return (
         <>
-        <Typography className={classes.title} variant="h4" gutterBottom>
+        <Typography className={classes.title} variant="h4">
             {props.titleLabel}
         </Typography>  
         </>

@@ -75,7 +75,7 @@ interface SupplierModalProps {
 
 export const SupplierModal = (props: SupplierModalProps) => {
   const classes = useStyles();
-
+  // eslint-disable-next-line
   const [SupplierName, setSupplierName] = useState("");
 
   const handleSupplierName = (event: any) => {
