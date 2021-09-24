@@ -4,13 +4,10 @@ import Backdrop from '@material-ui/core/Backdrop';
 import { Grid, Modal, Typography } from "@material-ui/core";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 
-import MonetizationOnRoundedIcon from "@material-ui/icons/MonetizationOnRounded";
-import AddCircleRoundedIcon from "@material-ui/icons/AddCircleRounded";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import SaveRoundedIcon from "@material-ui/icons/SaveRounded";
 
 import { InputText } from "../../components/InputText";
-import { InputNumber } from "../../components/InputNumber";
 import { ButtonLoading } from "../../components/ButtonLoading";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -110,42 +107,6 @@ export const ProductModal = (props: ProductModalProps) => {
                             label="Nombre del Producto"
                             id="name-product"
                             icon={<ShoppingCartIcon />}
-                        />
-                    </Grid>
-
-                    <Grid item xs={12} sm={12} md={4}>
-                        <InputNumber
-                            fullWidth={true}
-                            label="Categorias"
-                            id="stock"
-                            icon={<AddCircleRoundedIcon />}
-                        />
-                    </Grid>
-
-                    <Grid item xs={12} sm={12} md={4}>
-                        <InputNumber
-                            fullWidth={true}
-                            label="Proveedor"
-                            id="stock"
-                            icon={<AddCircleRoundedIcon />}
-                        />
-                    </Grid>
-
-                    <Grid item xs={12} sm={12} md={4}>
-                        <InputNumber
-                            fullWidth={true}
-                            label="Stock"
-                            id="stock"
-                            icon={<AddCircleRoundedIcon />}
-                        />
-                    </Grid>
-
-                    <Grid item xs={12} sm={12} md={4}>
-                        <InputNumber
-                            fullWidth={true}
-                            label="Precio"
-                            id="price"
-                            icon={<MonetizationOnRoundedIcon />}
                         />
                     </Grid>
 

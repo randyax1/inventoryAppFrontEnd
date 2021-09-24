@@ -104,7 +104,7 @@ export const CategoryModal = (props: CategoryModalProps) => {
   };
 
   const handleAlertClose = () => {
-    setOpenAlert(false)
+    setOpenAlert(false);
   }
 
   const onAcceptPress = async () => {
@@ -154,6 +154,7 @@ export const CategoryModal = (props: CategoryModalProps) => {
 
             <Grid item xs={12} sm={12} md={4}>
               <InputText
+                required
                 autoFocus={true}
                 capitalize
                 helperText={categoryHelperText}
