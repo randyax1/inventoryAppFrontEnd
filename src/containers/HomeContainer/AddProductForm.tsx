@@ -9,7 +9,6 @@ import {
   Divider,
 } from "@material-ui/core";
 import { InputText } from "../../components/InputText";
-import { InputNumber } from "../../components/InputNumber";
 import { ButtonLoading } from "../../components/ButtonLoading";
 
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
@@ -107,24 +106,6 @@ export const AddProductForm = () => {
             id=""
             fullWidth={true}
             inputLabel="Categoria"
-            />
-          </Grid>
-
-          <Grid item xs={6} md={4}>
-            <InputNumber
-              fullWidth={true}
-              label="Stock"
-              id="stock"
-              icon={<AddCircleRoundedIcon />}
-            />
-          </Grid>
-
-          <Grid item xs={6} md={4}>
-            <InputNumber
-              fullWidth={true}
-              label="Precio"
-              id="price"
-              icon={<MonetizationOnRoundedIcon />}
             />
           </Grid>
 

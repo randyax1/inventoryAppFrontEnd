@@ -41,6 +41,7 @@ interface InputTextProps {
   helperText?: string;
   value?: string;
   capitalize?: boolean;
+  required?: boolean;
 }
 
 export const InputText = (props: InputTextProps) => {
@@ -59,10 +60,11 @@ export const InputText = (props: InputTextProps) => {
   return (
     <div>
       <TextField
+        autoComplete="off"
         error={props.error}
         helperText={props.helperText}
         fullWidth={props.fullWidth}
-        required={true}
+        required={props.required}
         className={`
         ${classes.TextField} 
         ${props.capitalize && classes.TextFieldCapitalize}
