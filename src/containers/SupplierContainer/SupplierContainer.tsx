@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Grid } from '@material-ui/core';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 
+import AddSharpIcon from '@material-ui/icons/AddSharp';
+
 import TitleLabel from '../../components/TitleLabel';
 import { ButtonLoading } from '../../components/ButtonLoading';
 import { SupplierModal } from './SupplierModal';
@@ -40,8 +42,9 @@ export const SupplierContainer = () => {
 
             <TitleLabel titleLabel="Proveedores" />
 
-            <ButtonLoading 
-            label={'Registrar Proveedor'} 
+            <ButtonLoading
+            icon={<AddSharpIcon/>}
+            label={'proveedor'} 
             isLoading={false} 
             onClick={() => { setOpenSupplierModal(true) }}
             />
