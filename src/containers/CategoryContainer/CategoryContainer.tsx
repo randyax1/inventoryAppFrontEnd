@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Grid } from "@material-ui/core";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 
+import AddSharpIcon from '@material-ui/icons/AddSharp';
+
 import TitleLabel from "../../components/TitleLabel";
 import { ButtonLoading } from "../../components/ButtonLoading";
 import { CategoryModal } from "./CategoryModal";
@@ -41,8 +43,9 @@ export const CategoryContainer = () => {
         <TitleLabel titleLabel="Categorias" />
 
         <ButtonLoading
+          icon={<AddSharpIcon/>}
           isLoading={false}
-          label={"Crear Categoria"}
+          label={"Categoria"}
           onClick={() => {
             setOpenCategoryModal(true);
           }}

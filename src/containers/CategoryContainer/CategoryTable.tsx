@@ -18,6 +18,7 @@ import {
 
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
+import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
 
 import {
   inventoryAppDeleteCategoryById,
@@ -26,6 +27,7 @@ import {
 import { CategoryInterface } from "../../types/inventoryAppBaseTypes";
 import { QuestionModal } from "../../components/QuestionModal";
 import { CategoryModal } from "./CategoryModal";
+import { InputText } from "../../components/InputText";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -45,7 +47,15 @@ const useStyles = makeStyles((theme: Theme) =>
       width: "100%",
     },
     container: {
-      height: "65vh",
+  
+    [theme.breakpoints.up("sm")]: {
+      height: "54vh",
+    },
+
+    [theme.breakpoints.down("xs")]: {
+      height: "60vh",
+    }
+
     },
     tableHead: {
       backgroundColor: "white",
@@ -58,6 +68,18 @@ const useStyles = makeStyles((theme: Theme) =>
     tableBody: {
         color:'#011228'
     },
+    searchArea: {
+      marginBottom: theme.spacing(2),
+      width:"25vw",
+      
+      [theme.breakpoints.down("md")]: {
+        width: "25vw",
+      },
+  
+      [theme.breakpoints.down("sm")]: {
+        width: "100%",
+      }
+    }
 
   })
 );
@@ -79,7 +101,14 @@ const columns = [
 ];
 
 const CategoryTable = () => {
+
   const classes = useStyles();
+
+  const [filter, setFilter] = useState("");
+
+  const onFilterInputChange = (event: any) => {
+    setFilter(event.target.value);
+  };
 
   const [categories, setCategories] = useState([] as any[]);
 
@@ -146,6 +175,15 @@ const CategoryTable = () => {
 
   return (
     <>
+      <Paper className={classes.searchArea}>
+      <InputText
+      icon={<SearchRoundedIcon/>}
+      id="filter"
+      onChange={ onFilterInputChange }
+      label="¿Que estas buscando?"
+      />
+      </Paper>
+
       <Paper elevation={5} variant="outlined" className={classes.root}>
         <TableContainer className={classes.container}>
           <Table stickyHeader aria-label="sticky table">
@@ -164,7 +202,18 @@ const CategoryTable = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {categories
+              
+              {
+              //eslint-disable-next-line
+              categories.filter(item => {
+              //eslint-disable-next-line
+                if (filter == "") {
+                  return item;
+                } else if (item.name.toLowerCase().includes(filter.toLowerCase())) {
+                  return item;
+                }
+
+              })
                 ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((item, index) => {
                   return (
