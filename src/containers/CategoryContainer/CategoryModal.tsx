@@ -66,7 +66,7 @@ function Alert(props: AlertProps) {
 }
 
 interface CategoryModalProps {
-  open: boolean;
+    open: boolean;
     onClose?: any;
     onSuccess: Function,
     category?: CategoryInterface;
@@ -86,7 +86,7 @@ export const CategoryModal = (props: CategoryModalProps) => {
   const classes = useStyles();
 
   const [isLoading, setIsLoading] = useState(false);
-  const [openAlert, setOpenAlert] = useState(false)
+  const [openAlert, setOpenAlert] = useState(false);
 
   const [categoryName, setCategoryName] = useState("");
 
@@ -124,6 +124,7 @@ export const CategoryModal = (props: CategoryModalProps) => {
       if(!props.isUpdatingCategory) {
         await inventoryAppCreateCategory(categoryName);
       }
+
       setIsLoading(false);
       setOpenAlert(true);
       props.onClose({}, 'escapeKeyDown');
