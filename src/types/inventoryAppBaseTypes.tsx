@@ -13,3 +13,12 @@ export interface CategoryInterface {
     name: string
 }
 
+export interface ProductInterface {
+    _id: string,
+    name: string,
+    supplier: string,
+    category: string,
+    quantity: number,
+    unitPrice: number
+}
+

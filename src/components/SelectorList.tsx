@@ -25,6 +25,7 @@ interface SelectorProps {
     fullWidth?: boolean;
     value?: string;
     onChange: Function;
+    getDataFromApi: Function;
 }
 
 export const SelectorList = (props: SelectorProps) => {

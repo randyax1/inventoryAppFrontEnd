@@ -154,7 +154,7 @@ export const SupplierModal = (props: SupplierModalProps) => {
       setIsLoading(true);
 
       if(props.isUpdatingSupplier) {
-        await inventoryAppUpdateSupplier( supplier._id, supplierName, supplierEmail, parseInt(supplierContactNumb), state, city)
+        await inventoryAppUpdateSupplier(supplier._id, supplierName, supplierEmail, parseInt(supplierContactNumb), state, city)
       }
 
       if(!props.isUpdatingSupplier) {

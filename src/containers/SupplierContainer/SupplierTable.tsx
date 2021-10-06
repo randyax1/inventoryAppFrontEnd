@@ -31,7 +31,11 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       "@global": {
         "*::-webkit-scrollbar": {
-          width: "0px",
+          height:"10px",
+          width: "10px"
+        },
+        "*::-webkit-scrollbar-thumb": {
+          backgroundColor:'gray'
         },
       },
 

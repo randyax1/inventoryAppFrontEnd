@@ -1,52 +1,68 @@
-import React, { useState } from 'react';
-import { Grid } from '@material-ui/core';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import React, { useState } from "react";
+import { Grid } from "@material-ui/core";
+import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 
-import TitleLabel from '../../components/TitleLabel';
-import { ButtonLoading } from '../../components/ButtonLoading';
-import { ProductModal } from './ProductModal';
+import AddSharpIcon from "@material-ui/icons/AddSharp";
+
+import TitleLabel from "../../components/TitleLabel";
+import { ButtonLoading } from "../../components/ButtonLoading";
+import { ProductModal } from "./ProductModal";
+import { ProductTable } from "./ProductTable";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-      titleAndButton:{
-        padding: theme.spacing(3)      
-    }
-  }),
+    titleAndButton: {
+      padding: theme.spacing(4, 2, 1, 2),
+    },
+    categoryTable: {
+      padding: theme.spacing(2),
+    },
+  })
 );
 
 export const ProductContainer = () => {
 
-    const classes = useStyles();
+  const classes = useStyles();
 
-    const [openProductModal, setOpenProductModal] = useState(false);
+  const [openProductModal, setOpenProductModal] = useState(false);
 
-    return (
-        <>
+  const handleClose = () => {
+    setOpenProductModal(false);
+  };
 
-        <Grid 
+  return (
+    <>
+      <Grid
         container
-        direction="row" 
+        direction="row"
         alignItems="baseline"
-        justifyContent="space-between" 
-        className={classes.titleAndButton}  
-        >
+        justifyContent="space-between"
+        className={classes.titleAndButton}
+      >
 
-            <TitleLabel titleLabel="Productos" />
+        <TitleLabel titleLabel="Productos" />
 
-            <ButtonLoading 
-            isLoading={false} 
-            label={'Registrar Producto'} 
-            onClick={() => { setOpenProductModal(true) }} 
-            />
+        <ButtonLoading
+          icon={<AddSharpIcon />}
+          isLoading={false}
+          label={"Producto"}
+          onClick={() => {
+            setOpenProductModal(true);
+          }}
+        />
+      </Grid>
 
-        </Grid>
+      <div className={classes.categoryTable}>
+          <ProductTable />
+      </div>
 
-        <ProductModal 
+      <ProductModal
         in
         title="Agregar Producto"
-        open={openProductModal} 
-        onClose={(event) => setOpenProductModal(false)} 
+        open={openProductModal}
+        onClose={handleClose}
+        onSuccess={() => window.location.reload()}
       />
-        </>
-    )
-}
+    </>
+  );
+};

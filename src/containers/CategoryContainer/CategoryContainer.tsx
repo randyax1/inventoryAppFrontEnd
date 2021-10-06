@@ -18,10 +18,12 @@ const useStyles = makeStyles((theme: Theme) =>
     categoryTable: {
       padding: theme.spacing(2)
     }
+    
   })
 );
 
 export const CategoryContainer = () => {
+
   const classes = useStyles();
 
   const [OpenCategoryModal, setOpenCategoryModal] = useState(false);
