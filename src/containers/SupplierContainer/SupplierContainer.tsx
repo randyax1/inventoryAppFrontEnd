@@ -1,70 +1,67 @@
-import React, { useState } from 'react';
-import { Grid } from '@material-ui/core';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import React, { useState } from "react";
+import { Grid, Tooltip } from "@material-ui/core";
+import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 
-import AddSharpIcon from '@material-ui/icons/AddSharp';
-
-import TitleLabel from '../../components/TitleLabel';
-import { ButtonLoading } from '../../components/ButtonLoading';
-import { SupplierModal } from './SupplierModal';
-import { SupplierTable } from './SupplierTable';
+import TitleLabel from "../../components/TitleLabel";
+import { ButtonLoading } from "../../components/ButtonLoading";
+import { SupplierModal } from "./SupplierModal";
+import { SupplierTable } from "./SupplierTable";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-      titleAndButton:{
-        padding: theme.spacing(4, 2, 1, 2),
-      },
-      supplierTable: {
-        padding: theme.spacing(2)
-      }
-  }),
+    titleAndButton: {
+      padding: theme.spacing(4, 2, 1, 2),
+    },
+    supplierTable: {
+      padding: theme.spacing(1, 2, 2, 2),
+    },
+  })
 );
 
 export const SupplierContainer = () => {
+  const classes = useStyles();
 
-    const classes = useStyles();
-    
-    const [OpenSupplierModal, setOpenSupplierModal] = useState(false);
+  const [OpenSupplierModal, setOpenSupplierModal] = useState(false);
 
-    const handleClose = () => {
-      setOpenSupplierModal(false)
-    };
+  const handleClose = () => {
+    setOpenSupplierModal(false);
+  };
 
-    return (
-        <>
-        <Grid 
+  return (
+    <>
+      <Grid
         container
         direction="row"
         alignItems="baseline"
         justifyContent="space-between"
-        className={classes.titleAndButton}  
-        >
-
-            <TitleLabel titleLabel="Proveedores" />
-
+        className={classes.titleAndButton}
+      >
+        <TitleLabel titleLabel="Proveedores" />
+        <Tooltip title={<h2>Registrar proveedor</h2>}>
+          <div>
             <ButtonLoading
-            icon={<AddSharpIcon/>}
-            label={'proveedor'} 
-            isLoading={false} 
-            onClick={() => { setOpenSupplierModal(true) }}
+              icon={null}
+              label={"agregar"}
+              isLoading={false}
+              onClick={() => {
+                setOpenSupplierModal(true);
+              }}
             />
+          </div>
+        </Tooltip>
+      </Grid>
 
-        </Grid>
+      <div className={classes.supplierTable}>
+        <SupplierTable />
+      </div>
 
-        
-
-        <div className={classes.supplierTable}>
-          <SupplierTable />
-        </div>
-
-        <SupplierModal 
+      <SupplierModal
         in
         onClose={handleClose}
         title="Agregar Proveedor"
         open={OpenSupplierModal}
         onSuccess={() => window.location.reload()}
-        />
-        
-        </>
-    )
-}
+      />
+    </>
+  );
+};
