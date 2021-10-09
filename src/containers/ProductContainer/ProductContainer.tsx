@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { Grid } from "@material-ui/core";
+import { Grid, Tooltip } from "@material-ui/core";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
-
-import AddSharpIcon from "@material-ui/icons/AddSharp";
 
 import TitleLabel from "../../components/TitleLabel";
 import { ButtonLoading } from "../../components/ButtonLoading";
@@ -15,13 +13,13 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: theme.spacing(4, 2, 1, 2),
     },
     categoryTable: {
-      padding: theme.spacing(2),
+      padding: theme.spacing(1, 2, 2, 2),
     },
   })
 );
 
 export const ProductContainer = () => {
-
+  
   const classes = useStyles();
 
   const [openProductModal, setOpenProductModal] = useState(false);
@@ -39,21 +37,23 @@ export const ProductContainer = () => {
         justifyContent="space-between"
         className={classes.titleAndButton}
       >
-
         <TitleLabel titleLabel="Productos" />
-
-        <ButtonLoading
-          icon={<AddSharpIcon />}
-          isLoading={false}
-          label={"Producto"}
-          onClick={() => {
-            setOpenProductModal(true);
-          }}
-        />
+        <Tooltip title={<h2>Agregar producto</h2>}>
+          <div>
+            <ButtonLoading
+              icon={null}
+              isLoading={false}
+              label={"agregar"}
+              onClick={() => {
+                setOpenProductModal(true);
+              }}
+            />
+          </div>
+        </Tooltip>
       </Grid>
 
       <div className={classes.categoryTable}>
-          <ProductTable />
+        <ProductTable />
       </div>
 
       <ProductModal

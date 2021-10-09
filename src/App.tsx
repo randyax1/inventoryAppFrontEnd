@@ -30,7 +30,7 @@ function App() {
           <CategoryScreen />
         </Route>
         <Route>
-          <PageNotFoundScreen redirectTo="/login" textButton="&nbsp;Ir a la página de login" />
+          <PageNotFoundScreen redirectTo="/" textButton="&nbsp;Ir a la página inicial" />
         </Route>
         </Switch>
     </Router>

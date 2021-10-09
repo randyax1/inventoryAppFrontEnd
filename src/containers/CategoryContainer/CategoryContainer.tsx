@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { Grid } from "@material-ui/core";
+import { Grid, Tooltip } from "@material-ui/core";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
-
-import AddSharpIcon from '@material-ui/icons/AddSharp';
 
 import TitleLabel from "../../components/TitleLabel";
 import { ButtonLoading } from "../../components/ButtonLoading";
@@ -13,17 +11,14 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     titleAndButton: {
       padding: theme.spacing(4, 2, 1, 2),
-
     },
     categoryTable: {
-      padding: theme.spacing(2)
-    }
-    
+      padding: theme.spacing(1, 2, 2, 2),
+    },
   })
 );
 
 export const CategoryContainer = () => {
-
   const classes = useStyles();
 
   const [OpenCategoryModal, setOpenCategoryModal] = useState(false);
@@ -41,22 +36,23 @@ export const CategoryContainer = () => {
         justifyContent="space-between"
         className={classes.titleAndButton}
       >
-
         <TitleLabel titleLabel="Categorias" />
-
-        <ButtonLoading
-          icon={<AddSharpIcon/>}
-          isLoading={false}
-          label={"Categoria"}
-          onClick={() => {
-            setOpenCategoryModal(true);
-          }}
-        />
-
+        <Tooltip title={<h2>Agregar categoria</h2>}>
+          <div>
+            <ButtonLoading
+              icon={null}
+              isLoading={false}
+              label={"agregar"}
+              onClick={() => {
+                setOpenCategoryModal(true);
+              }}
+            />
+          </div>
+        </Tooltip>
       </Grid>
-      
+
       <div className={classes.categoryTable}>
-      <CategoryTable />
+        <CategoryTable />
       </div>
 
       <CategoryModal
