@@ -33,10 +33,12 @@ const useStyles = makeStyles((theme: Theme) =>
         height: "25%",
         width: "75%",
         padding: theme.spacing(2, 2, 1, 2),
+        overflow: "scroll",
+        overflowX: "hidden",
       },
 
       [theme.breakpoints.down("sm")]: {
-        height: "40%",
+        height: "30%",
         width: "90%",
         padding: theme.spacing(1, 2, 0, 2),
       },
