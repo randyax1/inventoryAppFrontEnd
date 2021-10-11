@@ -30,11 +30,11 @@ const useStyles = makeStyles((theme: Theme) =>
       borderRadius: 5,
       boxShadow: theme.shadows[5],
       height: "50%",
-      padding: theme.spacing(4, 4, 5, 4),
+      padding: theme.spacing(4, 4, 2, 4),
       width: "80%",
 
       [theme.breakpoints.down("md")]: {
-        height: "65%",
+        height: "45%",
         width: "90%",
         padding: theme.spacing(2, 2, 1, 2),
         overflow: "scroll",
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme: Theme) =>
       [theme.breakpoints.down("sm")]: {
         height: "80%",
         width: "90%",
-        padding: theme.spacing(2, 2, 1, 2),
+        padding: theme.spacing(2, 2, 2, 2),
       },
 
       "@media (min-width: 0px) and (max-width: 820px) and (orientation: landscape)":

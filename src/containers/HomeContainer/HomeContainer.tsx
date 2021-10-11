@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 
 import TitleLabel from '../../components/TitleLabel';
-import { ProductTable } from '../ProductContainer/ProductTable';
+import InventoryTable from './InventoryTable';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -26,11 +26,9 @@ export const HomeContainer = () => {
         </div>
 
         <div className={classes.productTable}>
-          <ProductTable />
+          <InventoryTable />
         </div>
 
-        
-        
         </>
     )
 }
